@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* 像素风格的网格背景 */
+  background-color: #f0fdf4; /* 浅绿背景，像 GameBoy */
+  background-image: 
+    linear-gradient(#dcfce7 2px, transparent 2px),
+    linear-gradient(90deg, #dcfce7 2px, transparent 2px);
+  background-size: 40px 40px;
+  font-family: 'Courier New', Courier, monospace; /* 模拟像素字体 */
+  @apply text-zinc-800 overflow-hidden selection:bg-green-500/30;
+}
+
+/* 禁止图片拖拽，防止干扰宠物交互 */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* 像素风格按钮 */
+.btn-pixel {
+  @apply flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-zinc-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold transition-transform active:translate-y-1 active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)];
+}
