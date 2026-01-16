@@ -7,23 +7,31 @@
 body {
   margin: 0;
   min-height: 100vh;
-  /* 像素风格的网格背景 */
-  background-color: #f0fdf4; /* 浅绿背景，像 GameBoy */
+  /* 默认背景 (浅绿) */
+  background-color: #f0fdf4; 
   background-image: 
-    linear-gradient(#dcfce7 2px, transparent 2px),
-    linear-gradient(90deg, #dcfce7 2px, transparent 2px);
+    linear-gradient(rgba(0,0,0,0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 2px, transparent 2px);
   background-size: 40px 40px;
-  font-family: 'Courier New', Courier, monospace; /* 模拟像素字体 */
-  @apply text-zinc-800 overflow-hidden selection:bg-green-500/30;
+  font-family: 'Courier New', Courier, monospace;
+  @apply text-zinc-800 overflow-hidden selection:bg-green-500/30 transition-colors duration-1000;
 }
 
-/* 禁止图片拖拽，防止干扰宠物交互 */
+/* 专注模式下，body背景变深 (通过 React 控制 class 实现，这里辅助一下) */
+.dark-mode body {
+  background-color: #18181b;
+}
+
 img {
   -webkit-user-drag: none;
   user-select: none;
 }
 
-/* 像素风格按钮 */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 .btn-pixel {
-  @apply flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-zinc-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold transition-transform active:translate-y-1 active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)];
+  @apply flex items-center gap-2 px-4 py-3 rounded-xl border-2 border-zinc-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold transition-transform active:translate-y-1 active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] cursor-pointer text-xs md:text-sm whitespace-nowrap;
 }
